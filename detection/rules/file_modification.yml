@@ -1,0 +1,22 @@
+rule_id: "RULE-006"
+name: "Sensitive System File Modification"
+description: "Detects unauthorized write, modification, or truncation events targeting critical operating system credentials and security configuration files."
+severity: "Critical"
+technique_id: "T1565.001"
+technique_name: "Data Manipulation: Stored Data Manipulation"
+tactic: "Impact / Persistence"
+criteria:
+  event_category: "file"
+  action: "modify"
+  target_files:
+    - "/etc/shadow"
+    - "/etc/passwd"
+    - "/etc/sudoers"
+    - "/etc/ssh/sshd_config"
+    - "/var/log/auth.log"
+false_positives:
+  - "Automated user provisioning scripts during planned maintenance windows."
+recommended_steps:
+  - "Take snapshot of current file and diff against known baseline configuration."
+  - "Trace executing user and parent PID responsible for modification."
+  - "Restore baseline copy if changes were unauthorized."

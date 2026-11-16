@@ -1,0 +1,25 @@
+# Virtual environment
+venv/
+.venv/
+env/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+
+# Streamlit
+.streamlit/secrets.toml
+
+# OS artifacts
+.DS_Store
+*.swp
+*~
+
+# Database runtime files (optional, we can keep or track empty db)
+# We can allow the database directory but ignore sqlite journal files
+*.db-journal
+*.db-wal
+*.db-shm

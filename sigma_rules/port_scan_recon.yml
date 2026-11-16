@@ -1,0 +1,26 @@
+title: Reconnaissance Network Port Scanning
+id: 9a2b53f4-1840-4f51-b8ef-001a1b1c0003
+status: test
+description: Detects rapid network connection attempts targeting multiple distinct ports on internal hosts from a single source IP.
+author: SOC-SIM Detection Engineering Team
+date: 2026-11-16
+references:
+  - https://attack.mitre.org/techniques/T1046/
+tags:
+  - attack.discovery
+  - attack.t1046
+logsource:
+  category: network
+  product: linux
+  service: iptables_or_flow
+detection:
+  selection:
+    event_category: network
+    event_type: port_probe
+    action: connection_attempt
+  timeframe: 1m
+  condition: selection | count(metadata.dest_port) by source_ip > 4
+falsepositives:
+  - Scheduled vulnerability scans by authorized IT security tools.
+  - Health check scripts checking service ports.
+level: medium

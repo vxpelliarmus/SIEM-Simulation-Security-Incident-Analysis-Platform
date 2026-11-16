@@ -1,0 +1,307 @@
+# Project: SOC-SIM — SIEM Simulation & Security Incident Analysis Platform
+
+Act as a senior cybersecurity engineer, SOC analyst, detection engineer, and Python full-stack developer.
+
+Build a complete, functional, locally runnable SIEM simulation platform for cybersecurity education and portfolio demonstration.
+
+## 1. Primary objective
+
+Create a realistic SIEM-style environment that demonstrates:
+
+- Security event generation
+- Log collection and normalization
+- Event correlation
+- Threat detection
+- Alert generation and severity classification
+- MITRE ATT&CK mapping
+- Incident investigation
+- Security analytics
+- SOC dashboard visualization
+
+This is an educational SIEM simulation, not a production SIEM or a replacement for Wazuh, Splunk, or Microsoft Sentinel.
+
+Clearly distinguish synthetic events from real system telemetry.
+
+## 2. Technology stack
+
+Use:
+
+- Python
+- Streamlit
+- SQLite
+- Pandas
+- Plotly
+- PyYAML
+- Sigma-compatible detection rules
+- MITRE ATT&CK framework
+- Git
+
+Avoid unnecessary frameworks and dependencies.
+
+Everything must run locally on Kali Linux without Docker, virtual machines, cloud services, or paid APIs.
+
+## 3. Security event simulation
+
+Implement independent event generators for:
+
+1. SSH brute-force attempts
+2. Suspicious authentication and account usage
+3. Network port scanning
+4. Privilege escalation
+5. Sensitive file modification
+6. Suspicious process execution
+
+Also generate normal background activity.
+
+Every event must have a consistent schema containing:
+
+- Event ID
+- Timestamp
+- Hostname
+- Username
+- Source IP
+- Event category
+- Event type
+- Action
+- Result
+- Relevant metadata
+- Simulation scenario identifier
+
+Generate realistic event sequences rather than unrelated random records.
+
+Use reserved documentation IP ranges and synthetic accounts. Do not generate real malicious traffic.
+
+## 4. Log ingestion and normalization
+
+Build a pipeline that:
+
+- Reads JSON event files
+- Validates event schemas
+- Normalizes timestamps
+- Handles missing and malformed fields
+- Stores normalized events in SQLite
+- Prevents accidental duplicate ingestion
+- Preserves original raw events
+
+## 5. Detection engine
+
+Implement a working rule-based detection engine.
+
+Required detections:
+
+- Multiple failed SSH logins from one source IP
+- Successful login following repeated failures
+- Suspicious login patterns
+- Port scanning behavior
+- Suspicious sudo activity
+- Sensitive file modification
+- Suspicious process execution
+
+Each detection must include:
+
+- Rule ID
+- Rule name
+- Description
+- Detection condition
+- Threshold or time window where applicable
+- Severity
+- Supporting event IDs
+- MITRE ATT&CK technique mapping
+- Recommended investigation steps
+
+Support correlation between related events.
+
+Avoid generating duplicate alerts for the same detection window.
+
+Implement configurable thresholds through YAML.
+
+## 6. Sigma rules
+
+Create properly structured Sigma-compatible YAML detection rules.
+
+Include:
+
+- Rule metadata
+- Log source
+- Detection selections
+- Conditions
+- False-positive considerations
+- Severity
+- ATT&CK references
+
+Validate the rules against the Sigma specification where possible.
+
+Do not claim that custom Python rules are automatically executed by a Sigma engine. Document the distinction.
+
+## 7. SOC dashboard
+
+Build a professional, responsive, dark-themed Streamlit dashboard.
+
+Pages:
+
+### Overview
+- Total events
+- Total alerts
+- Critical/high/medium/low alerts
+- Event timeline
+- Alert trends
+- Scenario distribution
+
+### Event Explorer
+- Search and filter events
+- View raw and normalized records
+- Filter by source IP, username, category and timestamp
+
+### Alert Center
+- Alert severity
+- Detection rule
+- Source IP
+- Affected account
+- Evidence
+- Alert status
+
+### Threat Intelligence & MITRE
+- ATT&CK technique IDs
+- Technique descriptions
+- Scenario mapping
+- Detection coverage
+
+Do not imply access to live threat intelligence feeds.
+
+### Incident Investigation
+- Incident timeline
+- Related events
+- Evidence
+- Analyst observations
+- Severity assessment
+- Recommended response
+- Investigation status
+
+### Simulation Control
+- Select a scenario
+- Configure event volume
+- Configure simulation parameters
+- Run simulations
+- Reset or clear test data with confirmation
+- View generated results
+
+## 8. Incident reports
+
+Automatically generate structured incident reports in Markdown.
+
+Each report should contain:
+
+- Incident ID
+- Summary
+- Detection time
+- Affected host
+- Source IP
+- Affected user
+- Severity
+- Timeline
+- Evidence
+- Detection rule
+- MITRE ATT&CK mapping
+- Analyst findings
+- False-positive assessment
+- Recommended containment and remediation
+- Final conclusion
+
+Never automatically claim an attack was successful when the logs do not establish that fact.
+
+## 9. Testing and validation
+
+Create automated tests for:
+
+- Event generation
+- Schema validation
+- Log ingestion
+- Detection thresholds
+- Event correlation
+- Duplicate alert prevention
+- Severity assignment
+- MITRE mapping
+- SQLite operations
+- Incident report generation
+
+Include positive and negative test cases.
+
+Test normal activity to ensure it does not produce unnecessary alerts.
+
+## 10. Repository structure
+
+Organize the project into:
+
+- simulator/
+- ingestion/
+- detection/
+- detection/rules/
+- sigma_rules/
+- dashboard/
+- database/
+- incident_reports/
+- data/
+- config/
+- tests/
+- docs/
+
+Include README.md, requirements.txt, installation instructions and a clear project architecture document.
+
+## 11. Documentation requirements
+
+Write a professional GitHub README containing:
+
+- Project overview
+- Objectives
+- Architecture
+- Technology stack
+- Installation
+- Execution instructions
+- Simulation scenarios
+- Detection methodology
+- MITRE ATT&CK mapping
+- Dashboard screenshots
+- Testing instructions
+- Limitations
+- Future improvements
+
+Clearly disclose that events are synthetic and no enterprise SIEM deployment is being claimed.
+
+## 12. Quality requirements
+
+- Produce working code, not pseudocode.
+- Do not use hardcoded dashboard statistics.
+- Dashboard statistics must come from SQLite.
+- Use modular, maintainable Python code.
+- Handle exceptions properly.
+- Avoid unnecessary dependencies.
+- Include meaningful comments.
+- Make the application usable without internet after installation.
+- Never execute attacks against external systems.
+- Do not silently ignore failed tests.
+- Do not mark incomplete features as implemented.
+
+## 13. Development procedure
+
+Work incrementally:
+
+1. Inspect the development environment.
+2. Create the repository structure.
+3. Implement event schema and simulator.
+4. Implement ingestion and normalization.
+5. Implement detection and correlation.
+6. Implement Sigma rules.
+7. Implement SQLite persistence.
+8. Build the dashboard.
+9. Implement incident reporting.
+10. Write and execute automated tests.
+11. Fix errors.
+12. Complete README and documentation.
+
+After each major phase, run tests and verify functionality.
+
+Before declaring the project complete, demonstrate a complete workflow:
+
+Generate simulated SSH brute-force activity → ingest events → detect suspicious behavior → generate an alert → display it in the dashboard → investigate it → generate an incident report.
+
+Prioritize correctness, realistic security logic, reproducibility, and educational value over visual appearance.

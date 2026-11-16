@@ -1,0 +1,19 @@
+rule_id: "RULE-003"
+name: "Suspicious Login Pattern - Account Probing"
+description: "Detects rapid authentication attempts across multiple distinct user accounts from a single source IP."
+severity: "Medium"
+technique_id: "T1078"
+technique_name: "Valid Accounts"
+tactic: "Defense Evasion / Initial Access"
+criteria:
+  event_category: "authentication"
+  action: "login_attempt"
+  unique_user_threshold: 3
+  time_window_seconds: 180
+  group_by: "source_ip"
+false_positives:
+  - "IT administrators cycling through test or administrative accounts."
+recommended_steps:
+  - "Investigate source IP origin and geographic/network context."
+  - "Identify whether targeted usernames are valid active enterprise directory accounts."
+  - "Check for subsequent successful logins on probed accounts."

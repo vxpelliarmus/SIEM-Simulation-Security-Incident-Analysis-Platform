@@ -1,0 +1,478 @@
+[
+  {
+    "event_id": "EVT-BASE-F69E215BB3DE",
+    "timestamp": "2026-11-16T02:10:15.049625+00:00",
+    "hostname": "gw-edge-01",
+    "username": "sysadmin_rob",
+    "source_ip": "10.0.1.15",
+    "event_category": "process",
+    "event_type": "sudo_exec",
+    "action": "elevate",
+    "result": "success",
+    "metadata": {
+      "command": "systemctl status chronyd",
+      "target_uid": 0,
+      "tty": "pts/0"
+    },
+    "scenario": "baseline"
+  },
+  {
+    "event_id": "EVT-BASE-D08D7D6DF238",
+    "timestamp": "2026-11-16T02:10:38.049625+00:00",
+    "hostname": "srv-app-01",
+    "username": "root",
+    "source_ip": "127.0.0.1",
+    "event_category": "process",
+    "event_type": "cron_job",
+    "action": "execute",
+    "result": "success",
+    "metadata": {
+      "command": "/usr/sbin/logrotate /etc/logrotate.conf",
+      "pid": 2460
+    },
+    "scenario": "baseline"
+  },
+  {
+    "event_id": "EVT-BASE-A326909F51B7",
+    "timestamp": "2026-11-16T02:11:02.049625+00:00",
+    "hostname": "srv-app-01",
+    "username": "root",
+    "source_ip": "127.0.0.1",
+    "event_category": "process",
+    "event_type": "cron_job",
+    "action": "execute",
+    "result": "success",
+    "metadata": {
+      "command": "/usr/sbin/logrotate /etc/logrotate.conf",
+      "pid": 2349
+    },
+    "scenario": "baseline"
+  },
+  {
+    "event_id": "EVT-BASE-AFA609B95F1B",
+    "timestamp": "2026-11-16T02:11:24.049625+00:00",
+    "hostname": "srv-app-01",
+    "username": "sysadmin_rob",
+    "source_ip": "10.0.1.5",
+    "event_category": "process",
+    "event_type": "sudo_exec",
+    "action": "elevate",
+    "result": "success",
+    "metadata": {
+      "command": "systemctl status chronyd",
+      "target_uid": 0,
+      "tty": "pts/0"
+    },
+    "scenario": "baseline"
+  },
+  {
+    "event_id": "EVT-BASE-2DAAAAF7ED62",
+    "timestamp": "2026-11-16T02:11:41.049625+00:00",
+    "hostname": "ws-finance-04",
+    "username": "root",
+    "source_ip": "127.0.0.1",
+    "event_category": "process",
+    "event_type": "cron_job",
+    "action": "execute",
+    "result": "success",
+    "metadata": {
+      "command": "/usr/sbin/logrotate /etc/logrotate.conf",
+      "pid": 3246
+    },
+    "scenario": "baseline"
+  },
+  {
+    "event_id": "EVT-BASE-E872E1CF35C8",
+    "timestamp": "2026-11-16T02:12:04.049625+00:00",
+    "hostname": "srv-app-01",
+    "username": "root",
+    "source_ip": "127.0.0.1",
+    "event_category": "process",
+    "event_type": "cron_job",
+    "action": "execute",
+    "result": "success",
+    "metadata": {
+      "command": "/usr/sbin/logrotate /etc/logrotate.conf",
+      "pid": 3392
+    },
+    "scenario": "baseline"
+  },
+  {
+    "event_id": "EVT-BASE-A8BA153A2C8C",
+    "timestamp": "2026-11-16T02:12:16.049625+00:00",
+    "hostname": "gw-edge-01",
+    "username": "jdoe",
+    "source_ip": "10.0.1.15",
+    "event_category": "authentication",
+    "event_type": "ssh_login",
+    "action": "login_attempt",
+    "result": "success",
+    "metadata": {
+      "auth_method": "publickey",
+      "port": 22,
+      "session_id": "sess-901e88"
+    },
+    "scenario": "baseline"
+  },
+  {
+    "event_id": "EVT-BASE-8160B81FEE78",
+    "timestamp": "2026-11-16T02:12:43.049625+00:00",
+    "hostname": "srv-db-01",
+    "username": "root",
+    "source_ip": "127.0.0.1",
+    "event_category": "process",
+    "event_type": "cron_job",
+    "action": "execute",
+    "result": "success",
+    "metadata": {
+      "command": "/usr/sbin/logrotate /etc/logrotate.conf",
+      "pid": 3461
+    },
+    "scenario": "baseline"
+  },
+  {
+    "event_id": "EVT-BASE-1BCBAA1B8162",
+    "timestamp": "2026-11-16T02:12:58.049625+00:00",
+    "hostname": "gw-edge-01",
+    "username": "backup_agent",
+    "source_ip": "192.168.1.105",
+    "event_category": "authentication",
+    "event_type": "ssh_login",
+    "action": "login_attempt",
+    "result": "success",
+    "metadata": {
+      "auth_method": "publickey",
+      "port": 22,
+      "session_id": "sess-3f06e9"
+    },
+    "scenario": "baseline"
+  },
+  {
+    "event_id": "EVT-BASE-50AF00180D31",
+    "timestamp": "2026-11-16T02:13:19.049625+00:00",
+    "hostname": "ws-dev-09",
+    "username": "root",
+    "source_ip": "127.0.0.1",
+    "event_category": "process",
+    "event_type": "cron_job",
+    "action": "execute",
+    "result": "success",
+    "metadata": {
+      "command": "/usr/sbin/logrotate /etc/logrotate.conf",
+      "pid": 3280
+    },
+    "scenario": "baseline"
+  },
+  {
+    "event_id": "EVT-BASE-F22BA4AA1CD7",
+    "timestamp": "2026-11-16T02:13:36.049625+00:00",
+    "hostname": "ws-finance-04",
+    "username": "www-data",
+    "source_ip": "192.168.1.10",
+    "event_category": "network",
+    "event_type": "http_request",
+    "action": "get_resource",
+    "result": "allowed",
+    "metadata": {
+      "dest_port": 80,
+      "http_status": 200,
+      "uri": "/assets/app.js",
+      "bytes_transferred": 2829
+    },
+    "scenario": "baseline"
+  },
+  {
+    "event_id": "EVT-BASE-4C6B75AE258C",
+    "timestamp": "2026-11-16T02:13:57.049625+00:00",
+    "hostname": "srv-app-01",
+    "username": "bwayne",
+    "source_ip": "192.168.1.25",
+    "event_category": "authentication",
+    "event_type": "ssh_login",
+    "action": "login_attempt",
+    "result": "success",
+    "metadata": {
+      "auth_method": "publickey",
+      "port": 22,
+      "session_id": "sess-099380"
+    },
+    "scenario": "baseline"
+  },
+  {
+    "event_id": "EVT-BASE-83EF4A37890F",
+    "timestamp": "2026-11-16T02:14:24.049625+00:00",
+    "hostname": "gw-edge-01",
+    "username": "www-data",
+    "source_ip": "192.168.1.10",
+    "event_category": "network",
+    "event_type": "http_request",
+    "action": "get_resource",
+    "result": "allowed",
+    "metadata": {
+      "dest_port": 80,
+      "http_status": 200,
+      "uri": "/api/health",
+      "bytes_transferred": 1332
+    },
+    "scenario": "baseline"
+  },
+  {
+    "event_id": "EVT-BASE-833A5892666C",
+    "timestamp": "2026-11-16T02:14:44.049625+00:00",
+    "hostname": "srv-db-01",
+    "username": "www-data",
+    "source_ip": "192.168.1.25",
+    "event_category": "network",
+    "event_type": "http_request",
+    "action": "get_resource",
+    "result": "allowed",
+    "metadata": {
+      "dest_port": 80,
+      "http_status": 200,
+      "uri": "/api/health",
+      "bytes_transferred": 2185
+    },
+    "scenario": "baseline"
+  },
+  {
+    "event_id": "EVT-BASE-89691D943EB8",
+    "timestamp": "2026-11-16T02:15:02.049625+00:00",
+    "hostname": "gw-edge-01",
+    "username": "sysadmin_rob",
+    "source_ip": "10.0.1.15",
+    "event_category": "process",
+    "event_type": "sudo_exec",
+    "action": "elevate",
+    "result": "success",
+    "metadata": {
+      "command": "systemctl status chronyd",
+      "target_uid": 0,
+      "tty": "pts/0"
+    },
+    "scenario": "baseline"
+  },
+  {
+    "event_id": "EVT-BASE-03EFB451CAF6",
+    "timestamp": "2026-11-16T02:15:21.049625+00:00",
+    "hostname": "srv-app-01",
+    "username": "www-data",
+    "source_ip": "10.0.1.5",
+    "event_category": "network",
+    "event_type": "http_request",
+    "action": "get_resource",
+    "result": "allowed",
+    "metadata": {
+      "dest_port": 80,
+      "http_status": 200,
+      "uri": "/style.css",
+      "bytes_transferred": 3384
+    },
+    "scenario": "baseline"
+  },
+  {
+    "event_id": "EVT-BASE-6DCAA35F2351",
+    "timestamp": "2026-11-16T02:15:36.049625+00:00",
+    "hostname": "srv-db-01",
+    "username": "www-data",
+    "source_ip": "10.0.1.5",
+    "event_category": "network",
+    "event_type": "http_request",
+    "action": "get_resource",
+    "result": "allowed",
+    "metadata": {
+      "dest_port": 80,
+      "http_status": 200,
+      "uri": "/style.css",
+      "bytes_transferred": 2946
+    },
+    "scenario": "baseline"
+  },
+  {
+    "event_id": "EVT-BASE-78F2A24970CB",
+    "timestamp": "2026-11-16T02:15:56.049625+00:00",
+    "hostname": "gw-edge-01",
+    "username": "sysadmin_rob",
+    "source_ip": "192.168.1.25",
+    "event_category": "process",
+    "event_type": "sudo_exec",
+    "action": "elevate",
+    "result": "success",
+    "metadata": {
+      "command": "systemctl status chronyd",
+      "target_uid": 0,
+      "tty": "pts/0"
+    },
+    "scenario": "baseline"
+  },
+  {
+    "event_id": "EVT-BASE-4060FDEE41D3",
+    "timestamp": "2026-11-16T02:16:15.049625+00:00",
+    "hostname": "ws-finance-04",
+    "username": "root",
+    "source_ip": "127.0.0.1",
+    "event_category": "process",
+    "event_type": "cron_job",
+    "action": "execute",
+    "result": "success",
+    "metadata": {
+      "command": "/usr/sbin/logrotate /etc/logrotate.conf",
+      "pid": 3317
+    },
+    "scenario": "baseline"
+  },
+  {
+    "event_id": "EVT-BASE-66F632C1E301",
+    "timestamp": "2026-11-16T02:16:42.049625+00:00",
+    "hostname": "ws-finance-04",
+    "username": "bwayne",
+    "source_ip": "192.168.1.10",
+    "event_category": "authentication",
+    "event_type": "ssh_login",
+    "action": "login_attempt",
+    "result": "success",
+    "metadata": {
+      "auth_method": "publickey",
+      "port": 22,
+      "session_id": "sess-b9eaf6"
+    },
+    "scenario": "baseline"
+  },
+  {
+    "event_id": "EVT-SSH-F6893B7194E6",
+    "timestamp": "2026-11-16T02:35:14.049787+00:00",
+    "hostname": "srv-app-01",
+    "username": "root",
+    "source_ip": "198.51.100.45",
+    "event_category": "authentication",
+    "event_type": "ssh_login",
+    "action": "login_attempt",
+    "result": "failure",
+    "metadata": {
+      "auth_method": "password",
+      "port": 22,
+      "attempt_number": 1,
+      "failure_reason": "invalid_credentials",
+      "user_agent": "SSH-2.0-OpenSSH_8.9p1",
+      "password_sample": "admin123"
+    },
+    "scenario": "ssh_bruteforce"
+  },
+  {
+    "event_id": "EVT-SSH-3E892757DBAA",
+    "timestamp": "2026-11-16T02:35:23.049787+00:00",
+    "hostname": "srv-app-01",
+    "username": "root",
+    "source_ip": "198.51.100.45",
+    "event_category": "authentication",
+    "event_type": "ssh_login",
+    "action": "login_attempt",
+    "result": "failure",
+    "metadata": {
+      "auth_method": "password",
+      "port": 22,
+      "attempt_number": 2,
+      "failure_reason": "invalid_credentials",
+      "user_agent": "SSH-2.0-OpenSSH_8.9p1",
+      "password_sample": "password"
+    },
+    "scenario": "ssh_bruteforce"
+  },
+  {
+    "event_id": "EVT-SSH-00C5A7A5CA6F",
+    "timestamp": "2026-11-16T02:35:32.049787+00:00",
+    "hostname": "srv-app-01",
+    "username": "root",
+    "source_ip": "198.51.100.45",
+    "event_category": "authentication",
+    "event_type": "ssh_login",
+    "action": "login_attempt",
+    "result": "failure",
+    "metadata": {
+      "auth_method": "password",
+      "port": 22,
+      "attempt_number": 3,
+      "failure_reason": "invalid_credentials",
+      "user_agent": "SSH-2.0-OpenSSH_8.9p1",
+      "password_sample": "root2026"
+    },
+    "scenario": "ssh_bruteforce"
+  },
+  {
+    "event_id": "EVT-SSH-DEA581AE9D8F",
+    "timestamp": "2026-11-16T02:35:38.049787+00:00",
+    "hostname": "srv-app-01",
+    "username": "root",
+    "source_ip": "198.51.100.45",
+    "event_category": "authentication",
+    "event_type": "ssh_login",
+    "action": "login_attempt",
+    "result": "failure",
+    "metadata": {
+      "auth_method": "password",
+      "port": 22,
+      "attempt_number": 4,
+      "failure_reason": "invalid_credentials",
+      "user_agent": "SSH-2.0-OpenSSH_8.9p1",
+      "password_sample": "toor"
+    },
+    "scenario": "ssh_bruteforce"
+  },
+  {
+    "event_id": "EVT-SSH-80BAE5945DB2",
+    "timestamp": "2026-11-16T02:35:47.049787+00:00",
+    "hostname": "srv-app-01",
+    "username": "root",
+    "source_ip": "198.51.100.45",
+    "event_category": "authentication",
+    "event_type": "ssh_login",
+    "action": "login_attempt",
+    "result": "failure",
+    "metadata": {
+      "auth_method": "password",
+      "port": 22,
+      "attempt_number": 5,
+      "failure_reason": "invalid_credentials",
+      "user_agent": "SSH-2.0-OpenSSH_8.9p1",
+      "password_sample": "123456"
+    },
+    "scenario": "ssh_bruteforce"
+  },
+  {
+    "event_id": "EVT-SSH-6F2DB9EF9CE9",
+    "timestamp": "2026-11-16T02:35:56.049787+00:00",
+    "hostname": "srv-app-01",
+    "username": "root",
+    "source_ip": "198.51.100.45",
+    "event_category": "authentication",
+    "event_type": "ssh_login",
+    "action": "login_attempt",
+    "result": "failure",
+    "metadata": {
+      "auth_method": "password",
+      "port": 22,
+      "attempt_number": 6,
+      "failure_reason": "invalid_credentials",
+      "user_agent": "SSH-2.0-OpenSSH_8.9p1",
+      "password_sample": "letmein"
+    },
+    "scenario": "ssh_bruteforce"
+  },
+  {
+    "event_id": "EVT-SSH-9D4FEC6D29CA",
+    "timestamp": "2026-11-16T02:36:14.049787+00:00",
+    "hostname": "srv-app-01",
+    "username": "root",
+    "source_ip": "198.51.100.45",
+    "event_category": "authentication",
+    "event_type": "ssh_login",
+    "action": "login_attempt",
+    "result": "success",
+    "metadata": {
+      "auth_method": "password",
+      "port": 22,
+      "session_id": "sess-2e07c96e",
+      "note": "Compromised credential login after failed attempts"
+    },
+    "scenario": "ssh_bruteforce"
+  }
+]

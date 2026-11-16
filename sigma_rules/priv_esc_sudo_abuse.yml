@@ -1,0 +1,32 @@
+title: Privilege Escalation via Sudo Abuse
+id: 9a2b53f4-1840-4f51-b8ef-001a1b1c0004
+status: test
+description: Detects invocation of shells or critical file inspection utilities via sudo, indicating potential privilege escalation or sudoers abuse.
+author: SOC-SIM Detection Engineering Team
+date: 2026-11-16
+references:
+  - https://attack.mitre.org/techniques/T1548/003/
+tags:
+  - attack.privilege_escalation
+  - attack.t1548.003
+logsource:
+  category: process
+  product: linux
+  service: sudo
+detection:
+  selection_command:
+    event_category: process
+    event_type: sudo_exec
+    metadata.command|contains:
+      - '/bin/bash'
+      - '/bin/sh'
+      - 'chmod +s'
+      - 'cat /etc/shadow'
+      - 'su -'
+  selection_denied:
+    event_type: sudo_exec
+    result: denied
+  condition: selection_command or selection_denied
+falsepositives:
+  - Authorized system administrator performing break-glass operations.
+level: high

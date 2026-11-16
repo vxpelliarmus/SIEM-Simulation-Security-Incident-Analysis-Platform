@@ -1,0 +1,21 @@
+rule_id: "RULE-004"
+name: "Network Port Scanning / Reconnaissance"
+description: "Detects sequential or distributed port connection probes to multiple distinct ports on a target host from a single source IP."
+severity: "Medium"
+technique_id: "T1046"
+technique_name: "Network Service Discovery"
+tactic: "Discovery"
+criteria:
+  event_category: "network"
+  event_type: "port_probe"
+  action: "connection_attempt"
+  port_threshold: 5
+  time_window_seconds: 60
+  group_by: "source_ip"
+false_positives:
+  - "Scheduled internal vulnerability scanners (e.g., Nessus, OpenVAS)."
+  - "Network monitoring appliances checking service availability."
+recommended_steps:
+  - "Correlate scanning IP against authorized scanner registry."
+  - "Inspect destination host firewall logs for open port hits."
+  - "Implement immediate rate limiting or blocking if unauthorized."

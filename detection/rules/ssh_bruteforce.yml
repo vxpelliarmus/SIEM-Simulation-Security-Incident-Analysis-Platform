@@ -1,0 +1,21 @@
+rule_id: "RULE-001"
+name: "SSH Brute Force Attack"
+description: "Detects multiple failed SSH authentication attempts originating from a single source IP within a brief time window."
+severity: "High"
+technique_id: "T1110"
+technique_name: "Brute Force"
+tactic: "Credential Access"
+criteria:
+  event_category: "authentication"
+  event_type: "ssh_login"
+  result: "failure"
+  threshold: 5
+  time_window_seconds: 120
+  group_by: "source_ip"
+false_positives:
+  - "Misconfigured automated service or backup script with expired credentials."
+  - "User forgotten password with repeated fast retries."
+recommended_steps:
+  - "Verify whether any authentication attempts succeeded after the failures."
+  - "Apply temporary firewall block on source IP."
+  - "Review target account status and authentication logs."

@@ -1,0 +1,24 @@
+rule_id: "RULE-005"
+name: "Suspicious Sudo Privilege Escalation"
+description: "Detects unauthorized sudo invocation attempts or execution of shell-spawning and privilege manipulation binaries via sudo."
+severity: "High"
+technique_id: "T1548.003"
+technique_name: "Abuse Elevation Control Mechanism: Sudo and Sudo Caching"
+tactic: "Privilege Escalation"
+criteria:
+  event_category: "process"
+  event_type: "sudo_exec"
+  flag_unauthorized: true
+  flagged_binaries:
+    - "/bin/bash"
+    - "/bin/sh"
+    - "chmod +s"
+    - "cat /etc/shadow"
+    - "su -"
+    - "passwd root"
+false_positives:
+  - "Legitimate sysadmin routine maintenance using elevated root shell."
+recommended_steps:
+  - "Verify ticket or authorization for administrator root access."
+  - "Inspect full command arguments and spawned child processes."
+  - "Suspend user account if execution was unexpected or unauthorized."

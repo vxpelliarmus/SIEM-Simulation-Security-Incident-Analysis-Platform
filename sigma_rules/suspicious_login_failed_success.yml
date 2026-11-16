@@ -1,0 +1,30 @@
+title: Successful Authentication Following Repeated Failures
+id: 9a2b53f4-1840-4f51-b8ef-001a1b1c0002
+status: test
+description: Detects successful login events from an IP address that previously registered multiple failed login attempts, suggesting successful brute-force or credential guessing.
+author: SOC-SIM Detection Engineering Team
+date: 2026-11-16
+references:
+  - https://attack.mitre.org/techniques/T1110/001/
+  - https://attack.mitre.org/techniques/T1078/
+tags:
+  - attack.credential_access
+  - attack.initial_access
+  - attack.t1110.001
+  - attack.t1078
+logsource:
+  category: authentication
+  product: linux
+  service: sshd
+detection:
+  selection_fail:
+    event_type: ssh_login
+    result: failure
+  selection_success:
+    event_type: ssh_login
+    result: success
+  timeframe: 5m
+  condition: selection_fail | count() by source_ip > 2 and selection_success
+falsepositives:
+  - Legitimate user entering mistyped password multiple times before typing correct password.
+level: critical

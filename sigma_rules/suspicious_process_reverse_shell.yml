@@ -1,0 +1,33 @@
+title: Suspicious Process Spawning or Reverse Shell
+id: 9a2b53f4-1840-4f51-b8ef-001a1b1c0006
+status: test
+description: Detects command execution matching patterns commonly associated with interactive reverse shells or network redirection utilities.
+author: SOC-SIM Detection Engineering Team
+date: 2026-11-16
+references:
+  - https://attack.mitre.org/techniques/T1059/004/
+tags:
+  - attack.execution
+  - attack.t1059.004
+logsource:
+  category: process_creation
+  product: linux
+  service: auditd
+detection:
+  selection:
+    event_category: process
+    event_type: process_spawn
+    metadata.command_line|contains:
+      - '/dev/tcp/'
+      - 'nc -e'
+      - 'nc -c'
+      - 'ncat -e'
+      - 'python -c import socket'
+      - 'curl | bash'
+      - 'wget | bash'
+      - 'bash -i'
+      - 'sh -i'
+  condition: selection
+falsepositives:
+  - Authorized developer test harnesses utilizing network redirection.
+level: high

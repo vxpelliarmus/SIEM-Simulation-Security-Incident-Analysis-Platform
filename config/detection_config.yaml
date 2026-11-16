@@ -1,0 +1,133 @@
+# SOC-SIM Detection Engine Configuration
+# Configurable thresholds, time windows, and severity settings
+
+global:
+  environment: "simulation"
+  timezone: "UTC"
+  default_window_seconds: 300
+  enable_deduplication: true
+  dedup_window_seconds: 3600
+
+rules:
+  RULE-001:
+    name: "SSH Brute Force Attack Detected"
+    enabled: true
+    severity: "High"
+    technique_id: "T1110"
+    technique_name: "Brute Force"
+    tactic: "Credential Access"
+    threshold: 5
+    time_window_seconds: 120
+    description: "Multiple failed SSH authentication attempts from a single source IP targeting one or more user accounts."
+    recommended_steps:
+      - "Block source IP at firewall/edge gateway."
+      - "Verify whether any authentication attempts succeeded afterwards."
+      - "Enforce multi-factor authentication and fail2ban policy."
+
+  RULE-002:
+    name: "Successful Authentication Following Repeated Failures"
+    enabled: true
+    severity: "Critical"
+    technique_id: "T1110.001"
+    technique_name: "Password Guessing (Compromised Credential)"
+    tactic: "Initial Access / Credential Access"
+    failure_threshold: 3
+    correlation_window_seconds: 300
+    description: "A successful login occurred from an IP address that previously generated multiple failed authentication attempts, indicating potential credential compromise."
+    recommended_steps:
+      - "Immediately isolate affected host and terminate active sessions."
+      - "Force password reset and revoke session tokens for compromised user."
+      - "Review all actions taken by the compromised account post-authentication."
+
+  RULE-003:
+    name: "Suspicious Login Pattern - Multiple Account Probing"
+    enabled: true
+    severity: "Medium"
+    technique_id: "T1078"
+    technique_name: "Valid Accounts"
+    tactic: "Defense Evasion / Initial Access"
+    unique_user_threshold: 3
+    time_window_seconds: 180
+    description: "A single source IP attempted authentication against multiple distinct usernames in rapid succession."
+    recommended_steps:
+      - "Inspect source IP reputation and internal network context."
+      - "Determine if accounts targeted are privileged or service accounts."
+      - "Temporarily lock accounts if probing continues."
+
+  RULE-004:
+    name: "Network Port Scanning / Host Reconnaissance"
+    enabled: true
+    severity: "Medium"
+    technique_id: "T1046"
+    technique_name: "Network Service Discovery"
+    tactic: "Discovery"
+    port_threshold: 5
+    time_window_seconds: 60
+    description: "A single source IP scanned multiple destination ports on an internal host within a brief timeframe."
+    recommended_steps:
+      - "Identify whether scanner IP is an authorized vulnerability assessment tool."
+      - "If unauthorized, drop traffic from source IP at switch/firewall level."
+      - "Check targeted ports for unpatched services."
+
+  RULE-005:
+    name: "Suspicious Privilege Escalation / Sudo Abuse"
+    enabled: true
+    severity: "High"
+    technique_id: "T1548.003"
+    technique_name: "Abuse Elevation Control Mechanism: Sudo and Sudo Caching"
+    tactic: "Privilege Escalation"
+    suspicious_commands:
+      - "/bin/bash"
+      - "/bin/sh"
+      - "chmod +s"
+      - "cat /etc/shadow"
+      - "visudo"
+      - "su -"
+      - "passwd root"
+    description: "Execution of elevated commands or shell spawning through sudo by non-admin users or unauthorized execution attempts."
+    recommended_steps:
+      - "Verify user authorization for sudo privileges in /etc/sudoers."
+      - "Audit session command history."
+      - "Revoke unauthorized sudo permissions immediately."
+
+  RULE-006:
+    name: "Sensitive System File Modification"
+    enabled: true
+    severity: "Critical"
+    technique_id: "T1565.001"
+    technique_name: "Data Manipulation: Stored Data Manipulation"
+    tactic: "Impact / Persistence"
+    monitored_paths:
+      - "/etc/shadow"
+      - "/etc/passwd"
+      - "/etc/sudoers"
+      - "/etc/ssh/sshd_config"
+      - "/var/log/auth.log"
+    description: "Unauthorized modification or tampering with critical security configuration or identity database files."
+    recommended_steps:
+      - "Compare file hash with known good baseline."
+      - "Check who modified the file and from which parent process."
+      - "Restore file from clean backup and revoke compromised credentials."
+
+  RULE-007:
+    name: "Suspicious Process Execution / Command Shell Spawning"
+    enabled: true
+    severity: "High"
+    technique_id: "T1059.004"
+    technique_name: "Command and Scripting Interpreter: Unix Shell"
+    tactic: "Execution"
+    suspicious_patterns:
+      - "/dev/tcp/"
+      - "nc -e"
+      - "nc -c"
+      - "ncat -e"
+      - "python -c import socket"
+      - "curl | bash"
+      - "wget | bash"
+      - "bash -i"
+      - "sh -i"
+    description: "Execution of commands typical of reverse shell payloads, remote command execution, or unauthorized interactive shells."
+    recommended_steps:
+      - "Terminate process PID immediately."
+      - "Identify parent process (e.g. web server, daemon)."
+      - "Isolate network communications for the affected host."

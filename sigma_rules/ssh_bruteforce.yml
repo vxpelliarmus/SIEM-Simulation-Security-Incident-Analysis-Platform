@@ -1,0 +1,26 @@
+title: SSH Authentication Brute Force Attempt
+id: 9a2b53f4-1840-4f51-b8ef-001a1b1c0001
+status: test
+description: Detects multiple failed SSH authentication attempts within a narrow time window from a single source IP address.
+author: SOC-SIM Detection Engineering Team
+date: 2026-11-16
+references:
+  - https://attack.mitre.org/techniques/T1110/
+tags:
+  - attack.credential_access
+  - attack.t1110
+logsource:
+  category: authentication
+  product: linux
+  service: sshd
+detection:
+  selection:
+    event_type: ssh_login
+    action: login_attempt
+    result: failure
+  timeframe: 2m
+  condition: selection | count(event_id) by source_ip > 4
+falsepositives:
+  - Misconfigured client scripts or scheduled jobs with expired credentials.
+  - Legitimate user forgetting password and retrying repeatedly.
+level: high

@@ -1,0 +1,31 @@
+title: Sensitive Security Configuration File Modification
+id: 9a2b53f4-1840-4f51-b8ef-001a1b1c0005
+status: test
+description: Detects write or modification events against critical authentication, authorization, or log files on a Linux system.
+author: SOC-SIM Detection Engineering Team
+date: 2026-11-16
+references:
+  - https://attack.mitre.org/techniques/T1565/001/
+tags:
+  - attack.impact
+  - attack.persistence
+  - attack.t1565.001
+logsource:
+  category: file
+  product: linux
+  service: auditd
+detection:
+  selection:
+    event_category: file
+    action: modify
+    metadata.filepath:
+      - '/etc/shadow'
+      - '/etc/passwd'
+      - '/etc/sudoers'
+      - '/etc/ssh/sshd_config'
+      - '/var/log/auth.log'
+  condition: selection
+falsepositives:
+  - Package manager updates (apt, dpkg) upgrading configuration files.
+  - Authorized identity management tooling.
+level: critical
