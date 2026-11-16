@@ -11,7 +11,7 @@
 
 ---
 
-## 📌 Project Overview
+##  Project Overview
 
 **SOC-SIM** provides a complete, locally runnable SIEM simulation environment that demonstrates how modern Security Operations Centers (SOCs) collect, analyze, correlate, detect, investigate, and report on security threats.
 
@@ -26,7 +26,7 @@ The project demonstrates:
 
 ---
 
-## 🏗️ Architecture
+## Architecture
 
 ```
                                   SOC-SIM Pipeline
@@ -65,7 +65,7 @@ Detailed architecture diagrams and flow descriptions are available in [`docs/arc
 
 ---
 
-## 🛠️ Technology Stack
+##  Technology Stack
 
 | Component | Technology | Rationale |
 |---|---|---|
@@ -79,7 +79,7 @@ Detailed architecture diagrams and flow descriptions are available in [`docs/arc
 
 ---
 
-## 📂 Repository Structure
+##  Repository Structure
 
 ```
 SOC-SIM/
@@ -159,7 +159,7 @@ SOC-SIM/
 
 ---
 
-## 🎯 Simulation Scenarios & MITRE ATT&CK Mapping
+##  Simulation Scenarios & MITRE ATT&CK Mapping
 
 | Scenario | Objective | MITRE ATT&CK | Tactic | Detection Rule | Severity |
 |---|---|---|---|---|---|
@@ -174,7 +174,7 @@ SOC-SIM/
 
 ---
 
-## 🚀 Installation & Execution
+##  Installation & Execution
 
 ### Prerequisites
 - Linux (tested on Kali Linux / Ubuntu 22.04+) or macOS
@@ -207,14 +207,14 @@ Open your web browser and navigate to: **`http://localhost:8501`**
 
 The dashboard provides six dedicated operational pages:
 
-1. **📊 SOC Overview**:
+1. ** SOC Overview**:
    - Executive metric cards displaying total events, total alerts, and counts by severity.
    - Plotly interactive line chart displaying real-time events ingested per minute.
    - Donut charts breakdown for severity and bar charts for scenario distributions.
-2. **🔍 Event Explorer**:
+2. ** Event Explorer**:
    - Multi-field filterable grid (Category, Scenario, Result, Free-text keyword search).
    - Side-by-side inspect modal comparing normalized event structures with original raw JSON payloads.
-3. **🚨 Alert Center**:
+3. ** Alert Center**:
    - Severity-colored alert triage table.
    - Detailed inspection card with supporting log evidence table.
    - Interactive status dropdown (`New`, `In Progress`, `Closed - True Positive`, `Closed - False Positive`) updating SQLite dynamically.
@@ -225,14 +225,14 @@ The dashboard provides six dedicated operational pages:
    - Reconstructs chronological kill-chain timelines from supporting log IDs.
    - Collaborative analyst notes section (persists analyst observations to SQLite).
    - **One-click Incident Report Generation**: Compiles formal Markdown incident reports with instant preview and download.
-6. **⚙️ Simulation Control**:
+6. ** Simulation Control**:
    - Trigger specific attack scenarios or baseline benign noise with custom event multipliers.
    - Full end-to-end pipeline execution with live visual feedback.
    - One-click database reset and purge utility.
 
 ---
 
-## 🧪 Testing & Validation
+##  Testing & Validation
 
 The project includes an automated test suite with **30 comprehensive tests** covering positive detections, negative detections (verifying that normal background traffic generates zero false positives), threshold validation, schema enforcement, SQLite operations, and report generation.
 
@@ -253,16 +253,16 @@ pytest -v tests/
 ## 🛡️ End-to-End Workflow Demonstration
 
 To demonstrate a complete security incident workflow:
-1. Navigate to **⚙️ Simulation Control**.
+1. Navigate to ** Simulation Control**.
 2. Select **`SSH Brute Force + Compromise (T1110.001)`** and click **`Execute Simulation Pipeline`**.
 3. Telemetry is generated, normalized, and stored in SQLite. The detection engine detects the dictionary attack, and the correlator triggers `RULE-002` (Critical severity).
-4. Navigate to **🚨 Alert Center** to review the triggered alert and supporting log IDs.
-5. Navigate to **🕵️ Incident Investigation**, select the alert, review the chronological timeline, add an analyst note, and click **`Generate & Preview Incident Report`**.
+4. Navigate to ** Alert Center** to review the triggered alert and supporting log IDs.
+5. Navigate to ** Incident Investigation**, select the alert, review the chronological timeline, add an analyst note, and click **`Generate & Preview Incident Report`**.
 6. The complete report is generated, saved to `incident_reports/`, and ready for download.
 
 ---
 
-## 📜 License & Acknowledgments
+##  License & Acknowledgments
 
 - Built for cybersecurity education, detection engineering practice, and portfolio demonstration.
 - Inspired by enterprise SOC workflows and detection engineering frameworks.
