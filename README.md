@@ -203,7 +203,7 @@ Open your web browser and navigate to: **`http://localhost:8501`**
 
 ---
 
-## 🖥️ Dashboard Walkthrough
+##  Dashboard Walkthrough
 
 The dashboard provides six dedicated operational pages:
 
@@ -218,10 +218,10 @@ The dashboard provides six dedicated operational pages:
    - Severity-colored alert triage table.
    - Detailed inspection card with supporting log evidence table.
    - Interactive status dropdown (`New`, `In Progress`, `Closed - True Positive`, `Closed - False Positive`) updating SQLite dynamically.
-4. **🛡️ Threat Intelligence & MITRE**:
+4. ** Threat Intelligence & MITRE**:
    - Curated reference mapping linking detection rules, tactics, and techniques to MITRE ATT&CK.
    - Tactical coverage visualization chart.
-5. **🕵️ Incident Investigation**:
+5. ** Incident Investigation**:
    - Reconstructs chronological kill-chain timelines from supporting log IDs.
    - Collaborative analyst notes section (persists analyst observations to SQLite).
    - **One-click Incident Report Generation**: Compiles formal Markdown incident reports with instant preview and download.
@@ -250,7 +250,7 @@ pytest -v tests/
 
 ---
 
-## 🛡️ End-to-End Workflow Demonstration
+##  End-to-End Workflow Demonstration
 
 To demonstrate a complete security incident workflow:
 1. Navigate to ** Simulation Control**.
